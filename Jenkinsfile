@@ -4,6 +4,9 @@ agent any
 tools {
   maven 'mymvn'
 }
+  parameters {
+  choice choices: ['dev', 'prod'], name: 'select_enviroment'
+}
 
 stages {
 
@@ -16,12 +19,14 @@ stages {
    parallel {
      stage('test A'){
        steps{
-         echo 'echo hello world'
+         echo 'test A'
+         sh 'mvn test'
        }
      }
        stage('test B'){
        steps{
-         echo 'echo hello world B'
+         echo 'test B'
+         sh 'mvn test'
        }
      }
    }
