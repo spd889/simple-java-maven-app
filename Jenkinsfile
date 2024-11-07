@@ -31,7 +31,28 @@ stages {
        }
      }
    }
+
+     post {
+  success {
+    dir("webapp/target/"){
+      stash name : "main-file" includes : "*.war"
+    }
   }
+}
+
+     
+  }
+
+
+  // stage('deploy_Dev'){
+  //   when { expression {params.select_enviroment=='dev'}  beforeAgent true }
+  //   agent {
+  //     lebel 'DevServer'
+  //   }
+  //   steps{
+  //     dir 
+  //   }
+  // }
 
 
 }
