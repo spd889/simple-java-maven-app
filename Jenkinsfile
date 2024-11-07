@@ -12,11 +12,21 @@ stages {
             sh 'mvn clean package -DskipTests=true'
             }
      }
-    stage('test') {
-        steps {
-            echo "hello world"
-            }
+   stage('test') {
+   parallel {
+     stage('test A'){
+       steps{
+         echo 'echo hello world'
+       }
      }
+       stage('test B'){
+       steps{
+         echo 'echo hello world B'
+       }
+     }
+   }
+  }
+
 
 }
 
